@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Quotes</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+  </head>
+  <body>
+    <h1>Welcome, {{user}}!</h1>
+    <a href="/logoff">Logout</a>
+    <div>
+      <h2>Quotable Quotes</h2>
+      {% for quote in quotes: %}
+      <div>
+        <p>{{quote['quoted_by']}}: {{quote['quote']}}</p>
+        <p>Posted by <a href="/users/{{quote['user_id']}}">{{quote['first_name']}}</a><p>
+        <form action="/movequotetofav/{{quote['id']}}">
+          <input type="submit" value="Add to My List">
+        </form>
+      </div>
+      <br>
+      {% endfor %}
+    </div>
+    <div>
+      <h2>Your Favorites</h2>
+      {% for quote in favquotes: %}
+      <div>
+        <p>{{quote['quoted_by']}}:{{quote['quote']}}</p>
+        <p>Posted by <a href="/users/{{ quote['user_id'] }}">{{quote['first_name']}}</a><p> 
+        <form action="/movequotetolist/{{quote['id']}}">
+          <input type="submit" value="Remove From My List">
+        </form>
+      </div>
+      <br>
+      {% endfor %}
+    </div> 
+
+    <div>
+      <h2>Contribute a Quote</h2>
+      <form action="/addaquote" method="POST">
+        Quoted By: <input type="text" name="quoted_by">
+        Message: <textarea name="quote" rows="3" cols="30"></textarea>
+        <input type="submit" value="Submit">
+      </form>
+        {% with messages = get_flashed_messages(with_categories=True, category_filter=['message_errors']) %}
+          {% if messages %}
+                {% for category, message in messages %}
+                  <p>{{ message }}</p>
+                {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>   
+
+
+
+        
+  </body>
+</html>

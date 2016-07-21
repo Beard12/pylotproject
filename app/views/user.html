@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Quotes</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+  </head>
+  <body>
+   <a href="/quotes">Dashboard</a>&nbsp;|&nbsp;<a href="/logoff">Logout</a>
+    <h2>Posts by {{user['first_name']}}!</h2>
+    <h2>Count: {{user['count']}}</h2>
+   
+    <div>
+    {%for quote in quotes:%}
+      <p>{{quote['quoted_by']}}: {{quote['quote']}}</p>
+    {% endfor %}
+
+    <div>
+
+        
+  </body>
+</html>

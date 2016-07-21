@@ -1,0 +1,15 @@
+#regisform{
+	width:20%;
+	display:inline-block;
+	padding-right: 0px;
+	text-align: right;
+}
+
+
+#loginform{
+	width:20%;
+	display:inline-block;
+	padding-right: 0px;
+	vertical-align: top;
+	text-align: right;
+}
